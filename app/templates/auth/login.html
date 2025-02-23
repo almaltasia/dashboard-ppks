@@ -1,0 +1,130 @@
+{% extends "layouts/base-auth.html" %}
+{% block title %} Sign IN {% endblock %}
+
+{% block content %}
+<main>
+    <section class="vh-lg-100 mt-5 mt-lg-0 bg-soft d-flex align-items-center">
+        <div class="container">
+            <div class="row justify-content-center form-bg-image">
+                <div class="col-12 d-flex align-items-center justify-content-center">
+                    <div class="bg-white shadow border-0 rounded border-light p-4 p-lg-5 w-100 fmxw-500">
+                        <div class="text-center text-md-center mb-5 mt-md-0">
+                            <h1 class="mb-0 h3">Masuk</h1>
+                            <p class="text-center">SATGAS PPKS PNUP</p>
+                        </div>
+
+                        <!-- Flash Messages -->
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                        {% for category, message in messages %}
+                        <div class="alert alert-{{ category if category != 'message' else 'info' }} alert-dismissible fade show"
+                            role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+
+                        <form method="POST" action="{{ url_for('auth.login') }}" class="mt-4">
+                            {{ form.hidden_tag() }}
+                            <!-- Form -->
+                            <div class="form-group mb-4">
+                                <label for="identity">Email/NIP/NIM</label>
+                                <div class="input-group">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <span class="fas fa-user-circle"></span>
+                                    </span>
+                                    {{ form.identity(placeholder="Masukkan Email/NIP/NIM",
+                                    class="form-control" + (" is-invalid" if form.identity.errors else "")) }}
+                                    {% if form.identity.errors %}
+                                    <div class="invalid-feedback">
+                                        {{ form.identity.errors[0] }}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <!-- End of Form -->
+                            <div class="form-group">
+                                <!-- Form -->
+                                <div class="form-group mb-4">
+                                    <label for="password">Password</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon2">
+                                            <span class="fas fa-unlock-alt"></span>
+                                        </span>
+                                        {{ form.password(placeholder="Password",
+                                        class="form-control border-end-0" + (" is-invalid" if form.password.errors else
+                                        ""),
+                                        type="password") }}
+                                        <span class="input-group-text bg-white border-start-0" id="togglePassword"
+                                            style="cursor: pointer;">
+                                            <i class="fa fa-eye" id="eyeIcon"></i>
+                                        </span>
+                                        {% if form.password.errors %}
+                                        <div class="invalid-feedback">
+                                            {{ form.password.errors[0] }}
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Remember me checkbox -->
+                            <div class="mb-4">
+                                <div class="form-check">
+                                    {{ form.remember_me(class="form-check-input") }}
+                                    {{ form.remember_me.label(class="form-check-label") }}
+                                </div>
+                            </div>
+
+                            <!-- Lupa password -->
+                            <div class="d-flex justify-content-end mb-4">
+                                <a href="{{ url_for('auth.forget_password') }}" class="small text-right">Lupa password?</a>
+                            </div>
+
+                            <div class="d-grid">
+                                {{ form.submit(class="btn btn-gray-800") }}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}
+
+{% block javascripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const togglePassword = document.getElementById('togglePassword');
+        const password = document.querySelector('input[name="password"]');
+        const eyeIcon = document.getElementById('eyeIcon');
+
+        togglePassword.addEventListener('click', function () {
+            // Toggle type attribute
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+
+            // Toggle eye icon
+            if (type === 'text') {
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            } else {
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            }
+        });
+
+        // Auto-dismiss flash messages after 5 seconds
+        setTimeout(function () {
+            const alerts = document.querySelectorAll('.alert');
+            alerts.forEach(function (alert) {
+                const bsAlert = new bootstrap.Alert(alert);
+                bsAlert.close();
+            });
+        }, 5000);
+    });
+</script>
+{% endblock javascripts %}
