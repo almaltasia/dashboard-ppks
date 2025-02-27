@@ -76,3 +76,74 @@ def forget_password():
             flash('Email/NIP tidak ditemukan dalam sistem.', 'danger')
     
     return render_template('auth/forget_password.html', form=form)
+
+# Tambahkan ini ke auth/routes.py
+
+@bp.route('/api/login', methods=['POST'])
+def api_login():
+    """API endpoint for login"""
+    data = request.get_json()
+    
+    if not data:
+        return jsonify({
+            'status': 'error', 
+            'message': 'Data tidak valid'
+        }), 400
+    
+    identity = data.get('identity')
+    password = data.get('password')
+    
+    if not identity or not password:
+        return jsonify({
+            'status': 'error', 
+            'message': 'Email/NIP dan password harus diisi'
+        }), 400
+    
+    # Check if identity is email or NIP
+    user = User.query.filter(
+        or_(
+            User.email == identity,
+            User.nomor_identitas == identity
+        )
+    ).first()
+    
+    if user and user.check_password(password):
+        # Check if user is active
+        if not user.is_active:
+            return jsonify({
+                'status': 'error', 
+                'message': 'Akun tidak aktif'
+            }), 401
+        
+        # Update last login time
+        user.updated_at = datetime.utcnow()
+        db.session.commit()
+        
+        # Login the user
+        login_user(user)
+        
+        # Return user data (exclude sensitive information)
+        return jsonify({
+            'status': 'success',
+            'message': 'Login berhasil',
+            'user': {
+                'id': user.id_users,
+                'full_name': user.full_name,
+                'email': user.email,
+                'roles': user.roles,
+                'jurusan': user.jurusan,
+                'prodi': user.prodi
+            }
+        }), 200
+    else:
+        return jsonify({
+            'status': 'error', 
+            'message': 'Email/NIP atau password tidak valid'
+        }), 401
+        
+@bp.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash('Anda telah berhasil logout.', 'success')
+    return redirect(url_for('auth.login'))

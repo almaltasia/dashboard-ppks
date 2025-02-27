@@ -1,52 +1,49 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- Primary Meta Tags -->
 
-    <title>SATGAS PPKS - {% block title %}{% endblock %}</title>
+    <title>
+        PPKS PNUP - {% block title %}{% endblock %}
+    </title>
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/jquery.dataTables.min.css"
-        integrity="sha512-1k7mWiTNoyx2XtmI96o+hdjP8nn0f3Z2N4oF/9ZZRgijyV4omsKOXEnqL1gKQNPy2MTSP9rIEWGcH/CInulptA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link type="text/css" href="{{ config.ASSETS_ROOT }}/css/index.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="title" content="SATGAS PPKS">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ config.ASSETS_ROOT }}/img/favicon/logo.png">
+    <link type="text/css" href="{{ config.ASSETS_ROOT }}/vendor/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
+    
+    <link type="text/css" href="{{ config.ASSETS_ROOT }}/vendor/notyf/notyf.min.css" rel="stylesheet">
+    <link type="text/css" href="{{ config.ASSETS_ROOT }}/css/volt.css" rel="stylesheet">
 
-    <!-- Specific Page CSS goes HERE -->
+    <!-- Specific Page JS goes HERE  -->
     {% block stylesheets %}{% endblock stylesheets %}
+
 </head>
 
-<body class="app">
-    <div id="loader">
-        <div class="spinner"></div>
-    </div>
+<body>
 
-    <script>
-        window.addEventListener("load", function load() {
-            const loader = document.getElementById("loader");
-            setTimeout(function () {
-                loader.classList.add("fadeOut");
-            }, 300);
-        });
-    </script>
+    {% include 'includes/sidebar.html' %}
 
-    <!-- @App Content -->
-    <!-- =================================================== -->
-    <div>
-        {% include 'includes/sidebar.html' %}
+    <main class="content">
 
-        <!-- #Main ============================ -->
-        <div class="page-container">
-            {% include 'includes/navigation.html' %} {% block content %}{% endblock
-            content %} {% include 'includes/footer.html' %}
-        </div>
-    </div>
+        {% include 'includes/navigation.html' %}
+
+        {% block content %}{% endblock content %}
+
+        {% include 'includes/footer.html' %}
+
+    </main>
 
     {% include 'includes/scripts.html' %}
 
-    <!-- Specific Page JS goes HERE -->
+    <!-- Specific Page JS goes HERE  -->
     {% block javascripts %}{% endblock javascripts %}
+
 </body>
 
 </html>
