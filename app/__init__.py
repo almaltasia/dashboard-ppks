@@ -21,7 +21,7 @@ def create_app(config_class=Config):
     
     # Create database tables if they don't exist
     # Comment this out if tables already exist
-    # with app.app_context():
-    #     db.create_all()
+    with app.app_context():
+        db.create_all()
     
     return app
