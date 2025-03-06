@@ -9,7 +9,7 @@ def index():
         return redirect(url_for('main.dashboard'))
     return redirect(url_for('auth.login'))
 
-@bp.route('/dashboard')
+@bp.route('/dashboard') 
 @login_required
 def dashboard():
     return render_template('dashboard/index.html')
