@@ -1,13 +1,14 @@
-<nav
-  class="navbar navbar-top navbar-expand navbar-dashboard navbar-dark ps-0 pe-2 pb-0"
->
+<nav class="navbar navbar-top navbar-expand navbar-dashboard navbar-dark ps-0 pe-2 pb-0">
   <div class="container-fluid px-0">
-    <div
-      class="d-flex justify-content-between w-100"
-      id="navbarSupportedContent"
-    >
-      <!-- Navbar links -->
+    <div class="d-flex justify-content-between w-100" id="navbarSupportedContent">
+      <!-- Left side - empty or for future breadcrumbs -->
+      <div class="d-flex align-items-center">
+        <!-- Left side content can go here if needed later -->
+      </div>
+      
+      <!-- Right side with notifications -->
       <ul class="navbar-nav align-items-center">
+        <!-- Notification Bell -->
         <li class="nav-item dropdown">
           <a
             class="nav-link text-dark notification-bell unread dropdown-toggle"
@@ -30,41 +31,32 @@
             </svg>
           </a>
           <div
-            class="dropdown-menu dropdown-menu-lg dropdown-menu-center mt-2 py-0"
+            class="dropdown-menu dropdown-menu-lg dropdown-menu-end mt-2 py-0"
           >
             <div class="list-group list-group-flush">
               <a
                 href="#"
                 class="text-center text-primary fw-bold border-bottom border-light py-3"
-                >Notifications</a
+                >Notifikasi Laporan</a
               >
               <a
                 href="#"
                 class="list-group-item list-group-item-action border-bottom"
               >
                 <div class="row align-items-center">
-                  <div class="col-auto">
-                    <!-- Avatar -->
-                    <img
-                      alt="Image placeholder"
-                      src="{{ config.ASSETS_ROOT }}/img/team/user-avatar.png"
-                      class="avatar-md rounded"
-                    />
-                  </div>
                   <div class="col ps-0 ms-2">
                     <div
                       class="d-flex justify-content-between align-items-center"
                     >
                       <div>
-                        <h4 class="h6 mb-0 text-small">Jose Leos</h4>
+                        <h4 class="h6 mb-0 text-small">Laporan Baru</h4>
                       </div>
                       <div class="text-end">
-                        <small class="text-danger">a few moments ago</small>
+                        <small class="text-danger">baru saja</small>
                       </div>
                     </div>
                     <p class="font-small mt-1 mb-0">
-                      Added you to an event "Project stand-up" tomorrow at 12:30
-                      AM.
+                      Laporan baru telah diterima dari Fakultas Teknik.
                     </p>
                   </div>
                 </div>
@@ -74,27 +66,19 @@
                 class="list-group-item list-group-item-action border-bottom"
               >
                 <div class="row align-items-center">
-                  <div class="col-auto">
-                    <!-- Avatar -->
-                    <img
-                      alt="Image placeholder"
-                      src="{{ config.ASSETS_ROOT }}/img/team/user-avatar.png"
-                      class="avatar-md rounded"
-                    />
-                  </div>
                   <div class="col ps-0 ms-2">
                     <div
                       class="d-flex justify-content-between align-items-center"
                     >
                       <div>
-                        <h4 class="h6 mb-0 text-small">Neil Sims</h4>
+                        <h4 class="h6 mb-0 text-small">Update Status</h4>
                       </div>
                       <div class="text-end">
-                        <small class="text-danger">2 hrs ago</small>
+                        <small class="text-danger">2 jam yang lalu</small>
                       </div>
                     </div>
                     <p class="font-small mt-1 mb-0">
-                      You've been assigned a task for "Awesome new project".
+                      Status laporan #2022-001 telah diperbarui ke "Dalam Proses".
                     </p>
                   </div>
                 </div>
@@ -104,27 +88,19 @@
                 class="list-group-item list-group-item-action border-bottom"
               >
                 <div class="row align-items-center">
-                  <div class="col-auto">
-                    <!-- Avatar -->
-                    <img
-                      alt="Image placeholder"
-                      src="{{ config.ASSETS_ROOT }}/img/team/user-avatar.png"
-                      class="avatar-md rounded"
-                    />
-                  </div>
                   <div class="col ps-0 m-2">
                     <div
                       class="d-flex justify-content-between align-items-center"
                     >
                       <div>
-                        <h4 class="h6 mb-0 text-small">Roberta Casas</h4>
+                        <h4 class="h6 mb-0 text-small">Tenggat Waktu</h4>
                       </div>
                       <div class="text-end">
-                        <small>5 hrs ago</small>
+                        <small>5 jam yang lalu</small>
                       </div>
                     </div>
                     <p class="font-small mt-1 mb-0">
-                      Tagged you in a document called "Financial plans",
+                      Laporan #2022-003 memerlukan tindak lanjut dalam 24 jam.
                     </p>
                   </div>
                 </div>
@@ -133,60 +109,20 @@
                 href="#"
                 class="list-group-item list-group-item-action border-bottom"
               >
-                <div class="row align-items-center">
-                  <div class="col-auto">
-                    <!-- Avatar -->
-                    <img
-                      alt="Image placeholder"
-                      src="{{ config.ASSETS_ROOT }}/img/team/user-avatar.png"
-                      class="avatar-md rounded"
-                    />
-                  </div>
+                <div class="row align-items-center">  
                   <div class="col ps-0 ms-2">
                     <div
                       class="d-flex justify-content-between align-items-center"
                     >
                       <div>
-                        <h4 class="h6 mb-0 text-small">Joseph Garth</h4>
+                        <h4 class="h6 mb-0 text-small">Laporan Selesai</h4>
                       </div>
                       <div class="text-end">
-                        <small>1 d ago</small>
+                        <small>1 hari yang lalu</small>
                       </div>
                     </div>
                     <p class="font-small mt-1 mb-0">
-                      New message: "Hey, what's up? All set for the
-                      presentation?"
-                    </p>
-                  </div>
-                </div>
-              </a>
-              <a
-                href="#"
-                class="list-group-item list-group-item-action border-bottom"
-              >
-                <div class="row align-items-center">
-                  <div class="col-auto">
-                    <!-- Avatar -->
-                    <img
-                      alt="Image placeholder"
-                      src="{{ config.ASSETS_ROOT }}/img/team/user-avatar.png"
-                      class="avatar-md rounded"
-                    />
-                  </div>
-                  <div class="col ps-0 ms-2">
-                    <div
-                      class="d-flex justify-content-between align-items-center"
-                    >
-                      <div>
-                        <h4 class="h6 mb-0 text-small">Bonnie Green</h4>
-                      </div>
-                      <div class="text-end">
-                        <small>2 hrs ago</small>
-                      </div>
-                    </div>
-                    <p class="font-small mt-1 mb-0">
-                      New message: "We need to improve the UI/UX for the landing
-                      page."
+                      Laporan #2022-002 telah ditutup dan selesai diproses.
                     </p>
                   </div>
                 </div>
@@ -208,7 +144,7 @@
                     clip-rule="evenodd"
                   ></path>
                 </svg>
-                View all
+                Lihat semua notifikasi
               </a>
             </div>
           </div>
